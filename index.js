@@ -24,10 +24,10 @@ let content = document.getElementById('content')
 
 function getWeatherData() {
     sendGetRequest('http://192.168.0.104/allData')
-        .then(data => {
-            console.log(data)
-            content.innerHTML = `<h2>Температура: ${data.temperature}</h2>
-                        <h2>Давление: ${data.pressure}</h2>`
+        .then(response => {
+            console.log(response)
+            content.innerHTML = `<h2>Температура: ${response.temperature}</h2>
+                        <h2>Давление: ${(response.pressure*0.75).toFixed(1)}</h2>`
         })
         .catch(err => console.log(err))
 
